@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast - API Weather</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="ph ph-cloud-sun"></i> SkyCast
+            </div>
+            <div class="header-actions">
+                <button class="unit-toggle" id="unitToggle">
+                    °C / °F
+                </button>
+                <button class="fav-btn" id="favBtn" title="Save to Favorites">
+                    <i class="ph ph-star"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search & Location -->
+        <div class="controls-wrapper">
+            <form class="search-box" id="searchForm">
+                <input type="text" class="search-input" id="cityInput" placeholder="Search city..." required autocomplete="off">
+                <button type="submit" class="search-btn" aria-label="Search">
+                    <i class="ph ph-magnifying-glass"></i>
+                </button>
+            </form>
+            <button class="location-btn" id="locationBtn" aria-label="Use Current Location" title="Detect Location">
+                <i class="ph ph-crosshair"></i>
+            </button>
+        </div>
+
+        <!-- Main Weather Display -->
+        <main class="weather-main" id="weatherMain">
+            <h2 class="city-name" id="cityName">London, GB</h2>
+            <p class="date-display" id="dateDisplay">Loading...</p>
+            
+            <div class="weather-icon-large">
+                <i class="ph ph-sun" id="weatherIcon"></i>
+            </div>
+            
+            <div class="temperature-container">
+                <span class="temperature" id="tempValue">--</span>
+                <span class="unit-indicator" id="unitDisplay">°C</span>
+            </div>
+            
+            <p class="weather-desc" id="weatherDesc">--</p>
+        </main>
+
+        <!-- 5-Day Forecast Section -->
+        <section class="forecast-section">
+            <h3 class="forecast-title">5-Day Forecast</h3>
+            <div class="forecast-container" id="forecastContainer">
+                <!-- Forecast cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Saved Cities Section -->
+        <section class="saved-section" id="savedSection">
+            <h3 class="saved-title">Saved Cities</h3>
+            <div class="saved-container" id="savedContainer">
+                <!-- Saved city chips injected via JS -->
+            </div>
+        </section>
+
+        <!-- Details Grid -->
+        <section class="weather-details">
+            <div class="detail-card">
+                <i class="ph ph-drop detail-icon"></i>
+                <div class="detail-info">
+                    <span class="detail-label">Humidity</span>
+                    <span class="detail-value" id="humidityVal">--%</span>
+                </div>
+            </div>
+            <div class="detail-card">
+                <i class="ph ph-wind detail-icon"></i>
+                <div class="detail-info">
+                    <span class="detail-label">Wind Speed</span>
+                    <span class="detail-value" id="windVal">--</span>
+                </div>
+            </div>
+            <div class="detail-card">
+                <i class="ph ph-gauge detail-icon"></i>
+                <div class="detail-info">
+                    <span class="detail-label">Pressure</span>
+                    <span class="detail-value" id="pressureVal">-- hPa</span>
+                </div>
+            </div>
+            <div class="detail-card">
+                <i class="ph ph-sun-horizon detail-icon"></i>
+                <div class="detail-info">
+                    <span class="detail-label">Sunrise/Sunset</span>
+                    <span class="detail-value" id="sunVal">-- / --</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Overlay -->
+        <div class="loader-container" id="loader">
+            <span class="loader"></span>
+            <p>Fetching Weather...</p>
+        </div>
+
+        <!-- Error Overlay -->
+        <div class="error-message" id="errorBox">
+            <div class="error-content">
+                <i class="ph ph-warning-circle error-icon"></i>
+                <h3 class="error-msg" id="errorMsg">Error</h3>
+                <button class="retry-btn" id="closeError">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
